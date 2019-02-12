@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var hello = require('./routes/hello');
 var session = require('express-session');
+var ajax = require('./routes/ajax');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/ajax',ajax);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
