@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var hello = require('./routes/hello');
 var session = require('express-session');
 var ajax = require('./routes/ajax');
+var validator = require('express-validator');
 
 var app = express();
 
@@ -24,6 +25,7 @@ var session_opt = {
 };
 app.use(session(session_opt));
 
+app.use(validator());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
