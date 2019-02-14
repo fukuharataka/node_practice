@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title><%=title%></title>
+    <link href="/stylesheets/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <head>
+      <h1><%=title %></h1>
+    </head>
+    <div role="main">
+      <h2>welcome to <%=login.name%></h2>
+      <form method="post" action="/">
+        <p><input type="text" name="msg" size="50">
+        <input type="submit" value="送信"></p>
+      </form>
+      <hr>
+      <p><table style="width: 95%;">
+        <% for(var i in collection) { %>
+          <%- include('data_item', {val:collection[i]}) %>
+        <% } %>
+      </table></p>
+      <p>
+        <% if (pagination.page > 1) { %>
+          <span><a href="/<%= pagination.page - 1 %>">&lt;&lt; prev</a></span>
+        <%} else {%>
+          <spam>&lt;&lt; prev</spam>
+        <% } %>
+        |
+        <% if (pagination.page < pagination.pageCount) {%>
+          <span><a href="/<%= pagination.page + 1 %>">next &gt;&gt;</a></span>
+        <% } else { %>
+          <span>next &gt;&gt;</span>
+        <% } %>
+      </p>
+    </div>
+  </body>
+</html>
